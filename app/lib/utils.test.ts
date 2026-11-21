@@ -1,5 +1,5 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import { daysSince, formatRelativeTime } from "./utils";
+import { daysSince, formatLessonCount, formatRelativeTime } from "./utils";
 
 describe("formatRelativeTime", () => {
   beforeEach(() => {
@@ -42,5 +42,16 @@ describe("daysSince", () => {
 
   it("counts whole days", () => {
     expect(daysSince("2027-02-15T11:00:00Z")).toBe(3);
+  });
+});
+
+describe("formatLessonCount", () => {
+  it("uses the singular noun for exactly one lesson", () => {
+    expect(formatLessonCount(1)).toBe("1 lesson");
+  });
+
+  it("uses the plural noun for zero and for more than one", () => {
+    expect(formatLessonCount(0)).toBe("0 lessons");
+    expect(formatLessonCount(2)).toBe("2 lessons");
   });
 });

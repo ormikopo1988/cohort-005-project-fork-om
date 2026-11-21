@@ -26,7 +26,7 @@ import { AlertTriangle, BookOpen, Search } from "lucide-react";
 import { CourseImage } from "~/components/course-image";
 import { UserAvatar } from "~/components/user-avatar";
 import { getCurrentUserId } from "~/lib/session";
-import { formatPrice } from "~/lib/utils";
+import { formatLessonCount, formatPrice } from "~/lib/utils";
 import { resolveCountry } from "~/lib/country.server";
 import { calculatePppPrice } from "~/lib/ppp";
 import { StarRating } from "~/components/star-rating";
@@ -494,7 +494,8 @@ export default function CourseCatalog({ loaderData }: Route.ComponentProps) {
                   <CardContent className="pt-0">
                     <div className="mb-1 flex items-center justify-between text-xs">
                       <span className="text-muted-foreground">
-                        {course.completedLessons} / {course.lessonCount} lessons
+                        {course.completedLessons} /{" "}
+                        {formatLessonCount(course.lessonCount)}
                       </span>
                       <span className="font-medium">{course.progress}%</span>
                     </div>
