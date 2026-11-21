@@ -74,7 +74,10 @@ function CourseProgress({
   progress,
   nextLessonId,
 }: CourseProgressProps) {
-  const targetLessonId = nextLessonId ?? course.modules[0]?.lessons[0]?.id;
+  const targetLessonId =
+    course.modules.length > 0
+      ? (nextLessonId ?? course.modules[0].lessons[0]?.id)
+      : undefined;
   return (
     <>
       <div className="mb-2 flex items-center justify-between text-sm">
