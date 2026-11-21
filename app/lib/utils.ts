@@ -75,7 +75,6 @@ export function formatDuration(
   return `${mStr}m`;
 }
 
-/** "1 lesson", otherwise "N lessons" (including "0 lessons"). */
 export function formatLessonCount(count: number): string {
   return `${count} ${count === 1 ? "lesson" : "lessons"}`;
 }
