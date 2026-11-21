@@ -25,6 +25,7 @@ import { getCountryTierInfo, COUNTRIES } from "~/lib/ppp";
 import { eq, like, and, or, sql } from "drizzle-orm";
 import { db } from "~/db";
 import { courses, categories, users, modules, lessons } from "~/db/schema";
+import { formatLessonCount } from "~/lib/utils";
 
 function getAllUsers() {
   return db.select().from(users).all();
@@ -330,7 +331,7 @@ export default function Home({ loaderData }: Route.ComponentProps) {
                     </span>
                     <span className="flex items-center gap-1">
                       <BookOpen className="size-3" />
-                      {course.lessonCount} lessons
+                      {formatLessonCount(course.lessonCount)}
                     </span>
                   </CardFooter>
                 </Card>

@@ -27,6 +27,7 @@ import {
   PlayCircle,
 } from "lucide-react";
 import { CourseImage } from "~/components/course-image";
+import { formatLessonCount } from "~/lib/utils";
 import { isRouteErrorResponse } from "react-router";
 
 function getUserEnrolledCourses(userId: number) {
@@ -346,8 +347,8 @@ export default function Dashboard({ loaderData }: Route.ComponentProps) {
                     <CardContent className="flex-1">
                       <div className="mb-2 flex items-center justify-between text-sm">
                         <span className="text-muted-foreground">
-                          {course.completedLessons} / {course.totalLessons}{" "}
-                          lessons
+                          {course.completedLessons} /{" "}
+                          {formatLessonCount(course.totalLessons)}
                         </span>
                         <span className="font-medium">{course.progress}%</span>
                       </div>
@@ -424,7 +425,9 @@ export default function Dashboard({ loaderData }: Route.ComponentProps) {
                     <CardContent className="flex-1">
                       <div className="flex items-center gap-2 text-sm text-green-600">
                         <CheckCircle2 className="size-4" />
-                        <span>Completed — {course.totalLessons} lessons</span>
+                        <span>
+                          Completed — {formatLessonCount(course.totalLessons)}
+                        </span>
                       </div>
                     </CardContent>
                     <CardFooter>
