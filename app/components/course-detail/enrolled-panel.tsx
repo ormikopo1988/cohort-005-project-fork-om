@@ -31,12 +31,12 @@ export function EnrolledPanel({
   teamPurchaseLink,
   userRating,
   refundOffer,
-  ...progress
+  ...courseProgress
 }: EnrolledPanelProps) {
   return (
     <>
       {countryLock && <CountryLockNotice countryLock={countryLock} />}
-      {canTake && <CourseProgress {...progress} />}
+      {canTake && <CourseProgress {...courseProgress} />}
       <Link to={teamPurchaseLink}>
         <Button variant="outline" className="w-full">
           <Users className="mr-2 size-4" />
@@ -46,7 +46,7 @@ export function EnrolledPanel({
       {canTake && <RateCourse userRating={userRating} />}
       {refundOffer && (
         <RequestRefund
-          slug={progress.course.slug}
+          slug={courseProgress.course.slug}
           purchaseId={refundOffer.purchaseId}
           amount={refundOffer.amount}
         />
