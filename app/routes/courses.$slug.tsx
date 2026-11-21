@@ -367,7 +367,7 @@ export async function loader({ params, request }: Route.LoaderArgs) {
   const lessonCount = getLessonCountForCourse(course.id);
 
   let progress = 0;
-  const lessonProgressMap: Record<number, string> = {};
+  const lessonProgressMap: Record<number, LessonProgressStatus> = {};
   let nextLessonId: number | null = null;
   let refundOffer: RefundOffer | null = null;
 
